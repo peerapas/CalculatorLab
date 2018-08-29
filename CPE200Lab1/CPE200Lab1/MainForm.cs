@@ -19,7 +19,8 @@ namespace CPE200Lab1
         private string firstOperand;
         private string operate;
         private string tempOperate;
-        public CalculatorEngine engine; 
+        public CalculatorEngine engine;
+        private string memory;
 
         private void resetAll()
         {
@@ -101,6 +102,39 @@ namespace CPE200Lab1
                     lblDisplay.Text = engine.calculate(operate, lblDisplay.Text, ""); ;
                     operate = tempOperate;
                     break;
+                /*case "MC":
+                    memory = engine.calculate(operate, "", "");
+                    break;
+                case "M+":
+                    break;
+                case "M-":
+                    break;
+                case "MR":
+                    lblDisplay.Text = engine.calculate(operate,lblDisplay.Text,"");
+                    break;
+                case "MS":
+                    memory = engine.calculate(operate, lblDisplay.Text, "");
+                    break;*/
+            }
+            if(operate == "MC")
+            {
+                memory = engine.calculate(operate, "", "");
+            }
+            if (operate == "M+")
+            {
+                memory = engine.calculate(operate, lblDisplay.Text, "");
+            }
+            if (operate == "M-")
+            {
+
+            }
+            if(operate == "MR")
+            {
+                lblDisplay.Text = memory;
+            }
+            if(operate == "MS")
+            {
+                memory = engine.calculate(operate, lblDisplay.Text, "");
             }
             isAllowBack = false;
         }
@@ -205,6 +239,11 @@ namespace CPE200Lab1
         }
 
         private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
         {
 
         }

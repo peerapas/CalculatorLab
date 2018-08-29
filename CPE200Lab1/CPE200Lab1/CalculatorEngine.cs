@@ -13,6 +13,7 @@ namespace CPE200Lab1
             string[] parts;
             int remainLength;
             double result;
+            double memory1=0;
             switch (operate)
             {
                 case "+":
@@ -63,6 +64,41 @@ namespace CPE200Lab1
                 case "1/X":
                     return (1 / (Convert.ToDouble(firstOperand))).ToString();
                     break;
+              /*  case "MC":
+                    return "0";
+                    break;
+                case "M+":
+                    memory1 += Convert.ToDouble(firstOperand);
+                    break;
+                case "M-":
+                    break;
+                case "MR":
+                    return memory1.ToString();
+                    
+                case "MS":
+                    return firstOperand.ToString();*/
+            }
+            if (operate == "MC")
+            {
+                return "0";
+            }
+            if (operate == "M+")
+            {
+                memory1 += (Convert.ToDouble(firstOperand));
+                return memory1.ToString();
+            }
+            if (operate == "M-")
+            {
+
+            }
+            if (operate == "MR")
+            {
+                return memory1.ToString();
+            }
+            if (operate == "MS")
+            {
+                memory1 = Convert.ToDouble(firstOperand);
+                return memory1.ToString();
             }
             return "E";
         }
