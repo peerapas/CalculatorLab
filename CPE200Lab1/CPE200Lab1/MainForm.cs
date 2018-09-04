@@ -102,41 +102,30 @@ namespace CPE200Lab1
                     lblDisplay.Text = engine.calculate(operate, lblDisplay.Text, ""); ;
                     operate = tempOperate;
                     break;
-                /*case "MC":
-                    memory = engine.calculate(operate, "", "");
+                
+            }
+        }
+        private void btnMemory_Click(object sender, EventArgs e)
+        {
+            switch(((Button)sender).Text)
+            {
+                case "MC":
+                    memory = "0";
                     break;
                 case "M+":
+                    memory = engine.calculate("+", memory, lblDisplay.Text);
                     break;
                 case "M-":
+                    memory = engine.calculate("-", memory, lblDisplay.Text);
                     break;
                 case "MR":
-                    lblDisplay.Text = engine.calculate(operate,lblDisplay.Text,"");
+                    lblDisplay.Text = memory;
                     break;
                 case "MS":
-                    memory = engine.calculate(operate, lblDisplay.Text, "");
-                    break;*/
+                    memory = lblDisplay.Text;
+                    break;
             }
-            if(operate == "MC")
-            {
-                memory = engine.calculate(operate, "", "");
-            }
-            if (operate == "M+")
-            {
-                memory = engine.calculate(operate, lblDisplay.Text, "");
-            }
-            if (operate == "M-")
-            {
-
-            }
-            if(operate == "MR")
-            {
-                lblDisplay.Text = memory;
-            }
-            if(operate == "MS")
-            {
-                memory = engine.calculate(operate, lblDisplay.Text, "");
-            }
-            isAllowBack = false;
+            isAfterEqual = true;
         }
 
         private void btnEqual_Click(object sender, EventArgs e)
