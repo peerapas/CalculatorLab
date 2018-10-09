@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace CPE200Lab1
 {
-    public class RPNCalculatorEngine : CalculatorEngine
+    public class RPNCalculatorEngine : TheCalculatorEngine
     {
-        public string Process(string str)
+        public string calculate(string str)
         {
-            Stack<string> rpnStack = new Stack<string>();
+            Stack<string> myStack = new Stack<string>();
             string[] parts = str.ToString().Split(' ');
             string firstOperand, secondOperand;
             string result;
@@ -19,35 +19,35 @@ namespace CPE200Lab1
             {
                 if (isOperator(part))
                 {
-                    if (rpnStack.Count != 0)
+                    if (myStack.Count != 0)
                     {
-                        secondOperand = rpnStack.Pop();
+                        secondOperand = myStack.Pop();
                     }
                     else
                     {
                         return "E";
                     }
-                    if (rpnStack.Count != 0)
+                    if (myStack.Count != 0)
                     {
-                        firstOperand = rpnStack.Pop();
+                        firstOperand = myStack.Pop();
                     }
                     else
                     {
                         return "E";
                     }
                     result = calculate(part, firstOperand, secondOperand);
-                    rpnStack.Push(result);
+                    myStack.Push(result);
                     operCount++;
                 }
                 else if (isNumber(part))
                 {
                     numCount++;
-                    rpnStack.Push(part);
+                    myStack.Push(part);
                 }
             }
-            if((rpnStack.Count == 1) && (operCount!=0) && (operCount == numCount-1) )
+            if((myStack.Count == 1) && (operCount!=0) && (operCount == numCount-1) )
             {
-                return rpnStack.Pop();
+                return myStack.Pop();
             }
             else
             {
